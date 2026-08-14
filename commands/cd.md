@@ -85,8 +85,38 @@ cd -
 - **"No such file or directory"**: The directory you're trying to access doesn't exist or the path is incorrect
 - Use `ls` to see available directories before using `cd`
 
+## Paths with Spaces
+
+When a directory name contains spaces, you need to quote or escape the path:
+
+### Using Double Quotes:
+```bash
+cd "my projects"
+```
+
+### Using Single Quotes:
+```bash
+cd 'my projects'
+```
+
+### Using Backslash Escaping:
+```bash
+cd my\ projects
+```
+
+**Why this matters:**
+
+Without quoting or escaping, the shell treats each space as a separator:
+```bash
+cd my projects    # Wrong! Treated as two separate arguments
+cd "my projects"  # Correct! Treated as one argument
+```
+
+See [paths-and-quoting.md](paths-and-quoting.md) for more details.
+
 ## Tips
 
 - Use `pwd` after `cd` to confirm your new location
 - Tab completion can help you navigate faster (press Tab while typing a directory name)
+- Tab completion automatically escapes spaces in directory names
 - Combine with `ls` to explore directory contents: `cd Documents && ls`

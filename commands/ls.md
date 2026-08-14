@@ -164,9 +164,41 @@ Lists all files in long format, sorted by size, with human-readable file sizes.
 
 ---
 
+## Paths with Spaces
+
+When listing directories or files with spaces in their names, use quotes or escaping:
+
+### Using Double Quotes:
+```bash
+ls "my projects"
+ls -l "my documents"
+```
+
+### Using Single Quotes:
+```bash
+ls 'my projects'
+ls -l 'my documents'
+```
+
+### Using Backslash Escaping:
+```bash
+ls my\ projects
+ls -l my\ documents
+```
+
+**Example:**
+```bash
+$ mkdir "project files"
+$ ls "project files"
+file1.txt  file2.txt
+```
+
+See [paths-and-quoting.md](paths-and-quoting.md) for more details.
+
 ## Tips
 
 - Use `ls -lh` for human-readable file sizes (KB, MB, GB instead of bytes)
 - Use `ls -lt` to sort by modification time (newest first)
 - Use `ls -ltr` to sort by modification time in reverse (oldest first)
 - Combine with `grep` to filter results: `ls -l | grep ".txt"`
+- Tab completion automatically handles spaces in names
