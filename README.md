@@ -1,51 +1,73 @@
 # Operating System Shell Commands
 
-Basic shell commands for Operating Systems course. Simple explanations with examples.
+Basic shell commands for Operating Systems course, organized into lab-wise modules.
 
-## Table of Contents
+## Repository Structure
 
-- [Commands Covered](#commands-covered)
-- [Shell → Kernel → Hardware](#shell--kernel--hardware)
-- [Quick Reference](#quick-reference)
-- [Standard Input and Output](#standard-input-and-output)
-- [Repository Structure](#repository-structure)
+This repository is organized into labs, each covering specific shell commands and concepts:
 
-## Commands Covered
+- **Lab 1**: Basic navigation, file listing, and paths with spaces
+- **Lab 2**: cat command, file operations, and redirection
 
-### Navigation
-- **pwd** - Print Working Directory
-- **cd** - Change Directory
-- **cd ..** - Move to parent directory
-- **cd ~** - Move to home directory
+## Labs Overview
 
-### Listing Files
-- **ls** - List Files and Directories
-- **ls -l** - Long format listing
-- **ls -a** - Show hidden files
-- **ls -lS** - List sorted by size
-- **ls -d \*/** - List only directories
+### Lab 1: Basic Shell Commands and Navigation
+- pwd, cd, ls commands
+- Directory navigation (cd .., cd ~)
+- Listing files with options (ls -l, ls -a, ls -lS)
+- Handling paths with spaces (quoting and escaping)
+- Manual pages (man)
+- Clear screen
 
-### Display and Create Files
-- **cat** - Display and concatenate files
-- **cat -n** - Display with line numbers
-- **cat > file** - Create/overwrite file from input
-- **cat >> file** - Append to file from input
+### Lab 2: cat Command and Redirection
+- Displaying file contents
+- Concatenating multiple files
+- Creating files with cat >
+- Appending with cat >>
+- Standard input and output (stdin/stdout)
+- Redirection operators (>, >>)
+- EOF signal (Ctrl+D)
 
-### Screen Management
-- **clear** - Clear Terminal Screen
+## Quick Start
 
-### Redirection
-- **>** - Redirect output to file (overwrites)
-- **>>** - Append output to file
+Navigate to any lab and run the demo script:
 
-### Paths and Quoting
-- **" "** - Double quotes for paths with spaces
-- **' '** - Single quotes for paths with spaces
-- **\\** - Backslash to escape spaces
+```bash
+# Lab 1
+cd lab1/scripts
+bash lab1_demo.sh
 
-### Help
-- **man** - Manual Pages
-- **Ctrl+D** - Send EOF signal
+# Lab 2
+cd lab2/scripts
+bash lab2_demo.sh
+```
+
+## Repository Structure
+
+```
+Operating-System-Shell-Commands/
+├── README.md                    # This file
+│
+├── lab1/                        # Lab 1: Basic Commands
+│   ├── README.md               # Lab 1 overview
+│   ├── commands/               # Detailed documentation
+│   │   ├── pwd.md
+│   │   ├── cd.md
+│   │   ├── ls.md
+│   │   ├── clear.md
+│   │   ├── paths-and-quoting.md
+│   │   └── man.md
+│   └── scripts/
+│       └── lab1_demo.sh        # Lab 1 demonstration
+│
+└── lab2/                        # Lab 2: cat and Redirection
+    ├── README.md               # Lab 2 overview
+    ├── commands/               # Detailed documentation
+    │   ├── cat.md
+    │   └── redirection.md
+    └── scripts/
+        └── lab2_demo.sh        # Lab 2 demonstration
+```
 
 ## Shell → Kernel → Hardware
 
@@ -67,7 +89,7 @@ Hardware / File System
 
 **User** enters a command like `ls -l`
 
-**Shell** is the command-line interface:
+**Shell** is the command-line interface that:
 - Reads and parses the command
 - Handles quoting and escaping
 - Handles redirection (`>`, `>>`)
@@ -96,84 +118,6 @@ Hardware / File System
 5. Kernel reads data from the file system/disk
 6. Data flows back: Hardware → Kernel → cat → Shell → Terminal
 
-## Quick Reference
+---
 
-| Command | Purpose | Example |
-|---------|---------|---------|
-| `pwd` | Show current directory | `pwd` |
-| `cd <dir>` | Change directory | `cd Documents` |
-| `cd ..` | Go to parent directory | `cd ..` |
-| `cd ~` | Go to home directory | `cd ~` |
-| `ls` | List files | `ls` |
-| `ls -l` | List with details | `ls -l` |
-| `ls -a` | List all (including hidden) | `ls -a` |
-| `ls -lS` | List sorted by size | `ls -lS` |
-| `ls -d */` | List only directories | `ls -d */` |
-| `cat file` | Display file contents | `cat hello.txt` |
-| `cat file1 file2` | Concatenate files | `cat part1 part2` |
-| `cat -n file` | Display with line numbers | `cat -n script.sh` |
-| `cat > file` | Create/overwrite file | `cat > new.txt` |
-| `cat >> file` | Append to file | `cat >> existing.txt` |
-| `clear` | Clear screen | `clear` |
-| `command > file` | Redirect output (overwrite) | `ls -l > out.txt` |
-| `command >> file` | Append output to file | `date >> log.txt` |
-| `"path name"` | Quote path with spaces | `cd "my projects"` |
-| `'path name'` | Quote path with spaces | `cd 'my projects'` |
-| `path\ name` | Escape space in path | `cd my\ projects` |
-| `man <command>` | Show manual | `man ls` |
-| `Ctrl+D` | Send EOF signal | Press to exit `cat` |
-
-## Standard Input and Output
-
-Commands read input from **stdin** (standard input) and write output to **stdout** (standard output).
-
-### Default Behavior:
-```
-Keyboard → stdin → Program → stdout → Terminal
-```
-
-### With Redirection:
-```
-Keyboard → stdin → cat → stdout → File (via >)
-```
-
-**Example with cat:**
-
-Without arguments, `cat` reads from stdin and writes to stdout:
-```bash
-$ cat
-hello         [you type this]
-hello         [cat echoes it]
-[Press Ctrl+D to exit]
-```
-
-With a file, `cat` reads the file and writes to stdout:
-```bash
-$ cat file.txt
-[contents displayed on terminal]
-```
-
-With redirection, stdout goes to a file:
-```bash
-$ cat > file.txt
-[type content]
-[Press Ctrl+D]
-```
-
-## Repository Structure
-
-```
-Operating-System-Shell-Commands/
-├── README.md
-├── commands/
-│   ├── pwd.md
-│   ├── cd.md
-│   ├── ls.md
-│   ├── cat.md
-│   ├── clear.md
-│   ├── paths-and-quoting.md
-│   ├── redirection.md
-│   └── man.md
-└── scripts/
-    └── basic_commands.sh
-```
+For detailed lab-wise documentation and examples, navigate to the respective lab folders.
